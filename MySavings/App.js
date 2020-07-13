@@ -1,12 +1,10 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import Splash from './src/screens/Splash';
+import Login from './src/screens/Login';
+import Font from './src/tests/Font';
 
 export default class App extends React.Component {
   render() {
-    return (
-      <View>
-        <Text>Hello world...</Text>
-      </View>
-    );
+    return <Splash />;
   }
 }
