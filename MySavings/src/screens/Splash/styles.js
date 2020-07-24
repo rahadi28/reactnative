@@ -7,6 +7,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#2F3C51',
   },
+  spinner: {
+    flex: 1,
+    alignSelf: 'center',
+  },
   logo: {
     height: 100,
     width: 125,
