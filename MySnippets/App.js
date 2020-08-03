@@ -16,7 +16,9 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import SwipeGestures from './src/components/SwipeGestures';
+import SwipeGestures1 from './src/components/SwipeGestures1';
+import SwipeGestures2 from './src/components/SwipeGestures2';
+import SwipeGestures3 from './src/components/SwipeGestures3';
 
 const App = () => {
   return (
@@ -32,7 +34,7 @@ const App = () => {
             </View>
           )}
           <View style={styles.body}>
-            <SwipeGestures />
+            <SwipeGestures3 />
           </View>
         </ScrollView>
       </SafeAreaView>
