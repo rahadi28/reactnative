@@ -3,6 +3,7 @@ import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {Provider} from 'react-redux';
+import {Root} from 'native-base';
 import Store from './src/redux/Store';
 import Splash from './src/screens/Splash';
 import Login from './src/screens/Login';
@@ -10,7 +11,6 @@ import Home from './src/screens/Home';
 import Profile from './src/screens/Profile';
 import Payment from './src/screens/Payment';
 import ParkingPayment from './src/screens/ParkingPayment';
-import {Root} from 'native-base';
 
 const AppNavigator = createStackNavigator(
   {

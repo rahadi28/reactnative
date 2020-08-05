@@ -1,29 +1,38 @@
 import React from 'react';
-import {View, Icon, Text} from 'native-base';
-import Logo from '../../../assets/images/MySavings.png';
 import {Image} from 'react-native';
+import {Icon, Header, Left, Right, Badge} from 'native-base';
+import Logo from '../../../assets/images/MySavings.png';
 
 export default class HeaderComponent extends React.Component {
   render() {
     return (
-      <View
-        style={{
-          height: 80,
-          flexDirection: 'row',
-          alignItems: 'center',
-          backgroundColor: 'royalblue',
-          paddingStart: 15,
-          elevation: 10,
-          opacity: 5,
-          shadowOpacity: 5,
-        }}>
-        <Icon
-          type="MaterialCommunityIcons"
-          name="wallet"
-          style={{color: 'white', marginRight: 15}}
-        />
-        <Image source={Logo} style={{height: 16, width: 80}} />
-      </View>
+      <>
+        <Header
+          androidStatusBarColor="transparent"
+          noShadow
+          style={{
+            backgroundColor: '#2469a5',
+            marginTop: 20,
+            marginHorizontal: 4,
+          }}>
+          <Left>
+            <Image source={Logo} style={{height: 25, width: 125}} />
+          </Left>
+          <Right>
+            <Icon name="notifications" style={{color: 'white'}} />
+            <Badge
+              style={{
+                position: 'absolute',
+                right: -4,
+                top: -4,
+                height: 14,
+                borderWidth: 1,
+                borderColor: '#2469a5',
+              }}
+            />
+          </Right>
+        </Header>
+      </>
     );
   }
 }

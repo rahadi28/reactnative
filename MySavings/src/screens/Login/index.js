@@ -50,9 +50,10 @@ class Login extends React.Component {
   doLogin = async () => {
     if (this.state.email === 'q' && this.state.password === 'q') {
       this.props.setUserActive({
+        accountNumber: 1210001083918,
+        balance: '100000000',
         fullName: 'Rahadi Oemar',
-        address: 'Jl. Saco Ragunan',
-        deposit: '1000000000000',
+        address: 'Jl. Saco Ragunan No.71',
       });
       this.props.navigation.navigate('Home');
       ToastAndroid.show('Login successfully', ToastAndroid.SHORT);

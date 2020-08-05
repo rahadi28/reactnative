@@ -1,29 +1,23 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import Accounting from 'accounting';
 import {
-  Container,
-  Content,
   Card,
   CardItem,
+  Col,
+  Container,
+  Content,
   Grid,
-  Row,
-  View,
-  Text,
   Icon,
   ListItem,
-  Left,
-  Body,
+  Row,
+  Text,
+  View,
   Button,
-  Col,
-  Header,
-  Right,
-  Badge,
 } from 'native-base';
-// import Accounting from "accounting-js";
-import HeaderComponent from '../../components/Header';
+import React from 'react';
+import {connect} from 'react-redux';
 import FooterComponent from '../../components/Footer';
-import Logo from '../../../assets/images/MySavings.png';
-import {Image, StatusBar} from 'react-native';
+import HeaderComponent from '../../components/Header';
+import { TouchableHighlight, TouchableOpacity } from 'react-native';
 
 class Home extends React.Component {
   state = {isShowDetail: false, iconName: 'arrow-dropdown'};
@@ -35,13 +29,12 @@ class Home extends React.Component {
           <View style={{flex: 1}}>
             <ListItem style={{flex: 1}}>
               <Text style={{textAlign: 'center'}}>
-                Address : {this.props.user.address}
+                Full Name : {this.props.user.fullName}
               </Text>
             </ListItem>
             <ListItem style={{flex: 1}}>
               <Text style={{textAlign: 'center'}}>
-                {/* Deposit : {'Rp. ' + Accounting.formatNumber(this.props.userActive.saving, 2, ".", ".")} */}
-                Deposit : {'Rp. ' + this.props.user.deposit}
+                Address : {this.props.user.address}
               </Text>
             </ListItem>
             <ListItem>
@@ -58,37 +51,7 @@ class Home extends React.Component {
   render() {
     return (
       <Container style={{backgroundColor: 'whitesmoke'}}>
-        <Header
-          androidStatusBarColor="transparent"
-          noShadow
-          style={{
-            backgroundColor: '#2469a5',
-            // backgroundColor: '#1a5289',
-            // backgroundColor: '#459dda',
-            // backgroundColor: '#3498db',
-            marginTop: 20,
-            marginHorizontal: 4,
-          }}>
-          <Left>
-            <Image source={Logo} style={{height: 25, width: 125}} />
-          </Left>
-          {/* <Body style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Image source={Logo} style={{height: 20, width: 100}} />
-          </Body> */}
-          <Right>
-            <Icon name="notifications" style={{color: 'white'}} />
-            <Badge
-              style={{
-                position: 'absolute',
-                right: -4,
-                top: -4,
-                height: 14,
-                borderWidth: 1,
-                borderColor: '#2469a5',
-              }}
-            />
-          </Right>
-        </Header>
+        <HeaderComponent />
         <Content padder>
           <Card
             transparent
@@ -126,22 +89,29 @@ class Home extends React.Component {
                       fontWeight: 'bold',
                       fontSize: 18,
                     }}>
-                    100.000.000 IDR
+                    {Accounting.formatMoney(this.props.user.balance, {
+                      symbol: 'IDR',
+                      format: '%v %s',
+                      thousand: '.',
+                      precision: 0,
+                    })}
                   </Text>
                   <Text
                     style={{
                       color: 'darkgray',
                       fontSize: 12,
                     }}>
-                    1210001083918
+                    {this.props.user.accountNumber}
                   </Text>
                 </Col>
                 <Col style={{justifyContent: 'center', width: 20}}>
-                  <Icon
-                    type="MaterialCommunityIcons"
-                    name="chevron-right"
-                    style={{color: '#9E9E9E', fontSize: 24}}
-                  />
+                  <TouchableOpacity onPress={() => alert('Tap account detail')}>
+                    <Icon
+                      type="MaterialCommunityIcons"
+                      name="chevron-right"
+                      style={{color: '#9E9E9E', fontSize: 24}}
+                    />
+                  </TouchableOpacity>
                 </Col>
               </Grid>
             </CardItem>
@@ -152,7 +122,11 @@ class Home extends React.Component {
                 <Content padder>
                   <Grid>
                     <Row style={{marginBottom: 40}}>
-                      <Col style={{alignItems: 'center', paddingHorizontal: 3}}>
+                      <Col
+                        style={{
+                          alignItems: 'center',
+                          paddingHorizontal: 3,
+                        }}>
                         <View
                           style={{
                             width: 50,
@@ -172,7 +146,11 @@ class Home extends React.Component {
                           Open Account
                         </Text>
                       </Col>
-                      <Col style={{alignItems: 'center', paddingHorizontal: 3}}>
+                      <Col
+                        style={{
+                          alignItems: 'center',
+                          paddingHorizontal: 3,
+                        }}>
                         <View
                           style={{
                             width: 50,
@@ -192,12 +170,16 @@ class Home extends React.Component {
                           Deposit
                         </Text>
                       </Col>
-                      <Col style={{alignItems: 'center', paddingHorizontal: 3}}>
+                      <Col
+                        style={{
+                          alignItems: 'center',
+                          paddingHorizontal: 3,
+                        }}>
                         <View
                           style={{
                             width: 50,
                             height: 50,
-                            backgroundColor: '#C5CAE9',
+                            backgroundColor: '#E6E6FA',
                             borderRadius: 25,
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -214,7 +196,11 @@ class Home extends React.Component {
                       </Col>
                     </Row>
                     <Row>
-                      <Col style={{alignItems: 'center', paddingHorizontal: 3}}>
+                      <Col
+                        style={{
+                          alignItems: 'center',
+                          paddingHorizontal: 3,
+                        }}>
                         <View
                           style={{
                             width: 50,
@@ -234,7 +220,11 @@ class Home extends React.Component {
                           Payment
                         </Text>
                       </Col>
-                      <Col style={{alignItems: 'center', paddingHorizontal: 3}}>
+                      <Col
+                        style={{
+                          alignItems: 'center',
+                          paddingHorizontal: 3,
+                        }}>
                         <View
                           style={{
                             width: 50,
@@ -254,7 +244,11 @@ class Home extends React.Component {
                           Transfer
                         </Text>
                       </Col>
-                      <Col style={{alignItems: 'center', paddingHorizontal: 3}}>
+                      <Col
+                        style={{
+                          alignItems: 'center',
+                          paddingHorizontal: 3,
+                        }}>
                         <View
                           style={{
                             width: 50,
